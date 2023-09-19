@@ -8,7 +8,7 @@ const Order = require("../models/Order");
 const { createOrder, updateOrder, deleteOrder, getOrderById, getAllOrders, getOrderByUserId } = require("../controllers/order");
 
 // CREATE
-router.post("/", verifyToken, createOrder)
+router.post("/:id", verifyToken, createOrder)
 
 // UPDATE
 router.put("/:id", verifyToken, updateOrder)
@@ -22,8 +22,6 @@ router.get("/find/:id", verifyToken, getOrderById)
 // GET ALL Orders by user id
 router.get("/find/all/:id", verifyToken, getAllOrders)
 
-// GET ALL Orders by user id
-router.get("/find/:id", verifyToken, getOrderByUserId)
 
 
 module.exports = router;

@@ -6,7 +6,7 @@ const PlanUserMapping = require('../models/PlanUserMapping');
 exports.createPlan = async (req, res) => {
   try {
     const { name, description, price, duration } = req.body;
-    const newPlan = new Plan({ name, description, price, duration });
+    const newPlan = new Plan({ name, description, price, duration, userId: req.user.id});
     const savedPlan = await newPlan.save();
     res.status(201).json(savedPlan);
   } catch (error) {
@@ -14,20 +14,10 @@ exports.createPlan = async (req, res) => {
   }
 };
 
-// Get all plans
-exports.getAllPlans = async (req, res) => {
-  try {
-    const plans = await Plan.find();
-    res.status(200).json(plans);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
 
 exports.userPlanMapping = async (req, res) => {
-    const { userId, planId } = req.body;
-    const newPlanMapping = new PlanUserMapping({ userId, planId});
+    const {planId} = req.body;
+    const newPlanMapping = new PlanUserMapping({ userId: req.user.id, planId});
     try {
         const savedPlanMapping = await newPlanMapping.save();
         res.status(201).json(savedPlanMapping);

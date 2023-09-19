@@ -8,6 +8,7 @@ const productRoute = require("./routes/product");
 const cartRoute = require("./routes/cart");
 const orderRoute = require("./routes/order");
 const stripeRoute = require("./routes/stripe");
+const planRoute = require("./routes/plan");
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -27,6 +28,7 @@ app.use("/api/products", productRoute);
 app.use("/api/carts", cartRoute);
 app.use("/api/orders", orderRoute);
 app.use("/api/checkout", stripeRoute);
+app.use("/api/plan", planRoute)
 
 app.listen(5000, () => {
     console.log(`Server is running on 5000`);

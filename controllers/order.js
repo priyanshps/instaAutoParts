@@ -5,7 +5,12 @@ const Cart = require("../models/Cart");
 
 // CREATE
 exports.createOrder = async (req, res) => {
-    const newOrder = new Order(req.body);
+    const { address } = req.body
+    const newOrder = new Order({
+        userId: req.user.id,
+        cartId: req.params.id,
+        address
+    });
     try {
         const savedOrder = await newOrder.save();
         res.status(200).json(savedOrder);

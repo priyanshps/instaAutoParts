@@ -14,7 +14,7 @@ router.put("/:id", verifyTokenAndAuthorization, updateUser)
 router.delete("/:id", verifyTokenAndAuthorization, deleteUser)
 
 // GET USER
-router.get("/find/:id", verifyTokenAndAdmin, getUserById)
+router.get("/find/:id", verifyTokenAndAuthorization, getUserById)
 
 // GET ALL USERS
 router.get("/", verifyTokenAndAdmin, getAllUsers)

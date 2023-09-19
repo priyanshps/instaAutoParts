@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const User = require("../models/Product");
 const {
     verifyToken,
     verifyTokenAndAuthorization,
@@ -14,7 +13,12 @@ const {
     createAdvertisement, 
     getAdvertisement,
     getAllAdvertisement,
-    updateAdvertisement
+    updateAdvertisement,
+    addReview,
+    getReview,
+    getAllReviews,
+    deleteReview,
+    updateReview
 } = require("../controllers/product");
 
 // CREATE
@@ -39,10 +43,24 @@ router.post("/advertisement/create", verifyTokenAndAdmin, createAdvertisement)
 router.get("/advertisement/:id", verifyTokenAndAdmin, getAdvertisement)
 
 // GET ALL Advertisement posts by user id
-router.get("/advertisement/:id", verifyTokenAndAdmin, getAllAdvertisement)
+router.get("/advertisement/all/:id", verifyTokenAndAdmin, getAllAdvertisement)
 
 // UPDATE Advertisement post by ad id
 router.put("/advertisement/:id", verifyTokenAndAdmin, updateAdvertisement)
 
+//Add review
+router.post("/review/:id", verifyToken, addReview)
+
+//Get review
+router.get("/review/:id", verifyToken, getReview)
+
+//Get all reviews
+router.get("/review/all/:id", verifyToken, getAllReviews)
+
+//Delete review
+router.delete("/review/:id", verifyToken, deleteReview)
+
+//Update review
+router.put("/review/:id", verifyToken, updateReview)
 
 module.exports = router;

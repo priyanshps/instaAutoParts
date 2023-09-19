@@ -19,11 +19,6 @@ router.delete("/:id", verifyToken, deleteCart)
 // GET Cart
 router.get("/find/:id", verifyToken, getCartById)
 
-// GET ALL Carts by user id
-router.get("/find/all/:id", verifyToken, getAllCarts)
-
-// GET ALL Carts by user id
-router.get("/find/:id", verifyToken, getCartByUserId)
 
 
 

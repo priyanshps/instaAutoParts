@@ -5,7 +5,6 @@ const OrderSchema = new mongoose.Schema(
   {
     userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     cartId: { type: mongoose.Schema.Types.ObjectId, ref: "Cart" },
-    amount: { type: Number, required: true },
     address: { type: Object, required: true },
     status: { type: String, default: "pending" },
   },
